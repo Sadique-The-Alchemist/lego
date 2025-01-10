@@ -1,12 +1,12 @@
 package main
 
 import (
-	"log"
-	"net/http"
+	"os"
 
-	"tdriven.com/dependencyinjection"
+	"tdriven.com/mocking"
 )
 
 func main() {
-	log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(dependencyinjection.MyGreeterHandler)))
+	sleeper := &mocking.DefaultSleeper{}
+	mocking.Countdown(os.Stdout, sleeper)
 }
